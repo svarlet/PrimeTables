@@ -39,6 +39,7 @@
 - Implementing a very fast prime number generator thanks to my research
 - Using property based testing to have extremely high test coverage on the prime numbers generation
 - Continuous integration with Travis CI (check it [there](https://travis-ci.org/svarlet/PrimeTables))
+- Simple pretty printing
 - TDD approach
 - Small scoped commits
 
@@ -46,3 +47,4 @@
 
 - There is no test coverage for command line option parsing or pretty printing
 - I would like to refactor the prime number generator to extract my Sieve datastructure to its own file
+- The pretty printing part feels hacky because I did not give it much thought beforehand
