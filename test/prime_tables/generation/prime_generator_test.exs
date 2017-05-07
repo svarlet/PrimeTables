@@ -18,4 +18,11 @@ defmodule PrimeTables.Generation.PrimeGeneratorTest do
       assert n == length(primes)
     end
   end
+
+  test "Generating N prime numbers generate a list of sorted numbers" do
+    ptest n: int(min: 1, max: 100_000) do
+      {:ok, primes} = PrimeGenerator.generate(n)
+      assert Enum.sort(primes) == primes
+    end
+  end
 end
