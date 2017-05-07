@@ -4,30 +4,32 @@ defmodule PrimeTables.Generation.PrimeGeneratorTest do
 
   alias PrimeTables.Generation.PrimeGenerator, as: PrimeGenerator
 
+  @max_number_of_primes 250
+
   test "Generating a negative number of primes is an error" do
     assert {:invalid, "Cannot generate -1 prime numbers."} == PrimeGenerator.generate(-1)
   end
 
-  test "Generating 0 prime numbers is an error" do
-    assert {:invalid, "Cannot generate 0 prime numbers."} == PrimeGenerator.generate(0)
+  test "Generating 0 prime numbers returns an empty list" do
+    assert {:ok, []} == PrimeGenerator.generate(0)
   end
 
   test "Generating N prime numbers generate a list of N numbers" do
-    ptest n: int(min: 1, max: 100_000) do
+    ptest n: int(min: 1, max: @max_number_of_primes) do
       {:ok, primes} = PrimeGenerator.generate(n)
       assert n == length(primes)
     end
   end
 
-  test "Generating N prime numbers generate a list of sorted numbers" do
-    ptest n: int(min: 1, max: 100_000) do
+  test "Generating N prime numbers generate a list of numbers sorted in ascending order" do
+    ptest n: int(min: 0, max: @max_number_of_primes) do
       {:ok, primes} = PrimeGenerator.generate(n)
       assert Enum.sort(primes) == primes
     end
   end
 
   test "None of the numbers between 2 primes are a prime" do
-    ptest n: int(min: 2, max: 1_000) do
+    ptest n: int(min: 2, max: @max_number_of_primes) do
       {:ok, primes} = PrimeGenerator.generate(n)
       composite_numbers = Enum.to_list(2..n) -- primes
       refute Enum.any?(composite_numbers, &is_prime?/1)
@@ -46,6 +48,13 @@ defmodule PrimeTables.Generation.PrimeGeneratorTest do
     case rem(x, from) do
       0 -> false
       _ -> is_prime?(x, from + 1, until)
+    end
+  end
+
+  test "All primes are present only once" do
+    ptest n: int(min: 0, max: @max_number_of_primes) do
+      {:ok, primes} = PrimeGenerator.generate(n)
+      assert length(Enum.uniq(primes)) == n
     end
   end
 end
