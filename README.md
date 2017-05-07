@@ -35,7 +35,7 @@
 
 ### I am pleased with
 
-- The time I took beforehand to do some research before coding (read ![this paper](https://www.cs.hmc.edu/~oneill/papers/Sieve-JFP.pdf))
+- The time I took beforehand to do some research before coding (read [this paper](https://www.cs.hmc.edu/~oneill/papers/Sieve-JFP.pdf))
 - Implementing a very fast prime number generator thanks to my research
 - Using property based testing to have extremely high test coverage on the prime numbers generation
 - Continuous integration with Travis CI
