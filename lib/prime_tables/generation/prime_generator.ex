@@ -20,11 +20,10 @@ defmodule PrimeTables.Generation.PrimeGenerator do
   end
 
   defp generate(n, primes, candidate, sieve) do
-    case sieve do
-      %{^candidate => _iterators} ->
+    if (Map.has_key?(sieve, candidate)) do
         updated_sieve = update_iterators(sieve, candidate)
         generate(n, primes, candidate + 1, updated_sieve)
-      _ ->
+    else
         updated_sieve = record_prime(sieve, candidate)
         generate(n - 1, [candidate | primes], candidate + 1, updated_sieve)
     end
