@@ -25,4 +25,27 @@ defmodule PrimeTables.Generation.PrimeGeneratorTest do
       assert Enum.sort(primes) == primes
     end
   end
+
+  test "None of the numbers between 2 primes are a prime" do
+    ptest n: int(min: 2, max: 1_000) do
+      {:ok, primes} = PrimeGenerator.generate(n)
+      composite_numbers = Enum.to_list(2..n) -- primes
+      refute Enum.any?(composite_numbers, &is_prime?/1)
+    end
+  end
+
+  defp is_prime?(x) do
+    is_prime?(x, 2, trunc(:math.sqrt(x)))
+  end
+
+  defp is_prime?(_, from, until) when from > until do
+    false
+  end
+
+  defp is_prime?(x, from, until) do
+    case rem(x, from) do
+      0 -> false
+      _ -> is_prime?(x, from + 1, until)
+    end
+  end
 end
