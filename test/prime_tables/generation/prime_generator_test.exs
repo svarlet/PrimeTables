@@ -4,6 +4,10 @@ defmodule PrimeTables.Generation.PrimeGeneratorTest do
   alias PrimeTables.Generation.PrimeGenerator, as: PrimeGenerator
 
   test "Generating a negative number of primes is an error" do
-    assert {:invalid, "Cannot generate a negative number of primes."} == PrimeGenerator.generate(-1)
+    assert {:invalid, "Cannot generate -1 prime numbers."} == PrimeGenerator.generate(-1)
+  end
+
+  test "Generating 0 prime numbers is an error" do
+    assert {:invalid, "Cannot generate 0 prime numbers."} == PrimeGenerator.generate(0)
   end
 end
