@@ -38,7 +38,7 @@
 - The time I took beforehand to do some research before coding (read [this paper](https://www.cs.hmc.edu/~oneill/papers/Sieve-JFP.pdf))
 - Implementing a very fast prime number generator thanks to my research
 - Using property based testing to have extremely high test coverage on the prime numbers generation
-- Continuous integration with Travis CI
+- Continuous integration with Travis CI (check it [there](https://travis-ci.org/svarlet/PrimeTables))
 - TDD approach
 - Small scoped commits
 
