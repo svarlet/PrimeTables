@@ -4,7 +4,7 @@ defmodule PrimeTables.Generation.PrimeGeneratorTest do
 
   alias PrimeTables.Generation.PrimeGenerator, as: PrimeGenerator
 
-  @max_number_of_primes 250
+  @max_number_of_primes 1_000
 
   test "Generating a negative number of primes is an error" do
     assert {:invalid, "Cannot generate -1 prime numbers."} == PrimeGenerator.generate(-1)
@@ -41,7 +41,7 @@ defmodule PrimeTables.Generation.PrimeGeneratorTest do
   end
 
   defp is_prime?(_, from, until) when from > until do
-    false
+    true
   end
 
   defp is_prime?(x, from, until) do
@@ -55,6 +55,13 @@ defmodule PrimeTables.Generation.PrimeGeneratorTest do
     ptest n: int(min: 0, max: @max_number_of_primes) do
       {:ok, primes} = PrimeGenerator.generate(n)
       assert length(Enum.uniq(primes)) == n
+    end
+  end
+
+  test "All generated numbers are primes" do
+    ptest n: int(min: 0, max: @max_number_of_primes) do
+      {:ok, primes} = PrimeGenerator.generate(n)
+      assert Enum.all?(primes, &is_prime?/1)
     end
   end
 end
