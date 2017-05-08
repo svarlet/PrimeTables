@@ -4,10 +4,6 @@ defmodule PrimeTables.Generation.PrimeGenerator do
     {:invalid, "Cannot generate #{n} prime numbers."}
   end
 
-  def generate(0) do
-    {:ok, []}
-  end
-
   def generate(n) do
     primes = []
     candidate = 2
