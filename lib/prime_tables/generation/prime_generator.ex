@@ -19,7 +19,7 @@ defmodule PrimeTables.Generation.PrimeGenerator do
 
   defp generate(n, primes, candidate, sieve) do
     if (Sieve.has_composite?(sieve, candidate)) do
-        updated_sieve = Sieve.update_iterators(sieve, candidate)
+        updated_sieve = Sieve.reject_composite(sieve, candidate)
         generate(n, primes, candidate + 1, updated_sieve)
     else
         updated_sieve = Sieve.record_prime(sieve, candidate)

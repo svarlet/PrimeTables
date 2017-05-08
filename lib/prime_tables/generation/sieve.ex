@@ -10,7 +10,7 @@ defmodule PrimeTables.Generation.Sieve do
     Map.put(sieve, next_composite, [{next_composite, prime}])
   end
 
-  def update_iterators(sieve, candidate) do
+  def reject_composite(sieve, candidate) do
     %{^candidate => iterators} = sieve
     updated_iterators = Enum.map(iterators, &bump_iterator/1)
     trimmed_sieve = Map.delete(sieve, candidate)
