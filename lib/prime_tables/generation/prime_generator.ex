@@ -1,5 +1,7 @@
 defmodule PrimeTables.Generation.PrimeGenerator do
 
+  alias PrimeTables.Generation.Sieve
+
   def generate(n) when n < 0 do
     {:invalid, "Cannot generate #{n} prime numbers."}
   end
@@ -7,7 +9,7 @@ defmodule PrimeTables.Generation.PrimeGenerator do
   def generate(n) do
     primes = []
     candidate = 2
-    sieve = %{}
+    sieve = Sieve.new
     generate(n, primes, candidate, sieve)
   end
 
