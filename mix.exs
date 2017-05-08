@@ -29,6 +29,6 @@ defmodule PrimeTables.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    [{:quixir, "~> 0.9.2"}]
+    [{:quixir, "~> 0.9.2", only: :test}]
   end
 end
