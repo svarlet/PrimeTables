@@ -48,5 +48,6 @@
 - The prime generator can be further optimized by considering odd numbers after 2.
 - The prime generator can be further optimized by relying on a priority queue rather than a Map.
 - There is no test coverage for command line option parsing or pretty printing
-- I would like to refactor the prime number generator to extract my Sieve datastructure to its own file
+- DONE ~I would like to refactor the prime number generator to extract my Sieve datastructure to its own file~
 - The pretty printing part feels hacky because I did not give it much thought beforehand
+- DONE ~A bunch of minor things which are not right (useless function clause, def/defp, ...)~
