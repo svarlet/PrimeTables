@@ -7,7 +7,7 @@ defmodule PrimeTables.Mixfile do
      elixir: "~> 1.4",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     escript: [main_module: PrimeTables],
+     escript: [main_module: PrimeTables, name: "prime_tables.bin"],
      deps: deps()]
   end
 
