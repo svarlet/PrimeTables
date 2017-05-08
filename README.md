@@ -13,7 +13,7 @@
 ### Building the project
     git clone git@github.com:svarlet/PrimeTables.git
     cd ./PrimeTables
-    mix escript.build
+    MIX_ENV=PROD mix escript.build
 
 ### Running the program
     ./prime_tables.bin -n <number_of_primes>
