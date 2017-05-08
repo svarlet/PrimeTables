@@ -16,9 +16,9 @@
     mix escript.build
 
 ### Running the program
-    ./prime_tables -n <number_of_primes>
+    ./prime_tables.bin -n <number_of_primes>
 
-    ./prime_tables -n 10
+    ./prime_tables.bin -n 10
        |   2 |   3 |   5 |   7 |  11 |  13 |  17 |  19 |  23 |  29
      2 |   4 |   6 |  10 |  14 |  22 |  26 |  34 |  38 |  46 |  58
      3 |   6 |   9 |  15 |  21 |  33 |  39 |  51 |  57 |  69 |  87
