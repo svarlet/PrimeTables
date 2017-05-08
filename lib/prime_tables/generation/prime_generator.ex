@@ -22,7 +22,7 @@ defmodule PrimeTables.Generation.PrimeGenerator do
         updated_sieve = update_iterators(sieve, candidate)
         generate(n, primes, candidate + 1, updated_sieve)
     else
-        updated_sieve = record_prime(sieve, candidate)
+        updated_sieve = Sieve.record_prime(sieve, candidate)
         generate(n - 1, [candidate | primes], candidate + 1, updated_sieve)
     end
   end
@@ -36,16 +36,6 @@ defmodule PrimeTables.Generation.PrimeGenerator do
         Map.update(sieve, composite, [iterator], fn iterators -> [iterator | iterators] end)
       end
     )
-  end
-
-  defp record_prime(sieve, prime) do
-    {next_composite, prime} = new_iterator(prime)
-    Map.put(sieve, next_composite, [{next_composite, prime}])
-  end
-
-  defp new_iterator(prime) do
-    next_composite_for_prime = prime * prime
-    {next_composite_for_prime, prime}
   end
 
   defp bump_iterator({composite, prime}) do
