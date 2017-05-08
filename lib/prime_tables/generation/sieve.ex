@@ -6,8 +6,12 @@ defmodule PrimeTables.Generation.Sieve do
   end
 
   def record_prime(sieve, prime) do
-    next_composite = prime * prime
-    Map.put(sieve, next_composite, [{next_composite, prime}])
+    {next_composite, _} = iterator = new_iterator(prime)
+    Map.put(sieve, next_composite, [iterator])
+  end
+
+  defp new_iterator(prime) do
+    {prime * prime, prime}
   end
 
   def reject_composite(sieve, candidate) do
