@@ -32,15 +32,15 @@ defmodule PrimeTables do
     |> print_table
   end
 
-  def print_table({:error, message}) do
+  defp print_table({:error, message}) do
     IO.puts message
   end
 
-  def print_table({:ok, []}) do
+  defp print_table({:ok, []}) do
     IO.puts "No primes were found."
   end
 
-  def print_table({:ok, primes}) do
+  defp print_table({:ok, primes}) do
     last_prime = List.last(primes)
     column_width = String.length("#{last_prime * last_prime}")
 

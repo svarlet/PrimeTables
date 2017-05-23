@@ -13,12 +13,12 @@
 ### Building the project
     git clone git@github.com:svarlet/PrimeTables.git
     cd ./PrimeTables
-    mix escript.build
+    MIX_ENV=PROD mix escript.build
 
 ### Running the program
-    ./prime_tables -n <number_of_primes>
+    ./prime_tables.bin -n <number_of_primes>
 
-    ./prime_tables -n 10
+    ./prime_tables.bin -n 10
        |   2 |   3 |   5 |   7 |  11 |  13 |  17 |  19 |  23 |  29
      2 |   4 |   6 |  10 |  14 |  22 |  26 |  34 |  38 |  46 |  58
      3 |   6 |   9 |  15 |  21 |  33 |  39 |  51 |  57 |  69 |  87
@@ -45,6 +45,9 @@
 
 ### Things I'm not happy with
 
+- The prime generator can be further optimized by considering odd numbers after 2.
+- The prime generator can be further optimized by relying on a priority queue rather than a Map.
 - There is no test coverage for command line option parsing or pretty printing
-- I would like to refactor the prime number generator to extract my Sieve datastructure to its own file
+- DONE ~I would like to refactor the prime number generator to extract my Sieve datastructure to its own file~
 - The pretty printing part feels hacky because I did not give it much thought beforehand
+- DONE ~A bunch of minor things which are not right (useless function clause, def/defp, ...)~
